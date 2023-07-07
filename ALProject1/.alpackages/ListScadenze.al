@@ -24,7 +24,7 @@ page 50148 ListaScadenza
                 {
                     ApplicationArea = All;
                 }
-                field(TipoAnagrafica; rec.TipoAnagrafica)
+                field(TipoAnagrafica; rec.TipoAnagrafica1)
                 {
                     ApplicationArea = All;
                 }

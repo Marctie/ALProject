@@ -23,7 +23,6 @@ Table 50143 TabellaScadenze
         {
 
             NotBlank = TRUE;
-            TableRelation = Customer."No.";
         }
         Field(4; Scadenza; Date)
         {

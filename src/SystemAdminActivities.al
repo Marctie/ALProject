@@ -2,7 +2,7 @@ page 50133 "Esempio Cue Activities"
 {
     Caption = 'Esempio Cue Activities';
     PageType = CardPart;
-    SourceTable = "Tabella Esempio Cue";
+    SourceTable = "TabellaScadenze";
     RefreshOnActivate = true;
     ShowFilter = false;
     ApplicationArea = all;
@@ -12,52 +12,37 @@ page 50133 "Esempio Cue Activities"
     {
         area(content)
         {
-            cuegroup(SalesCueContainer)
+            cuegroup(Group1)
             {
-                Caption = 'vi prego uscite';
-                CuegroupLayout = Wide;
-                ShowCaption = true;
-
-
-                field("NoUserLoggedOn"; Rec.NoUsersLoggedOn)
-                {
-                    Caption = 'PrimaCue';
-                    ApplicationArea = all;
-                    DrillDownPageID = "ListaScadenza";
-                    ToolTip = 'Specifies the sum of sales in the current month excluding taxes.';
-
-                }
-                field("Total No of Minutes Logged On"; Rec."Total of Minutes Logged On")
-                {
-                    Caption = 'SecondaCue';
-                    ToolTip = 'Specifies the field for the total number of minutes logged on';
-                    ApplicationArea = all;
-                    DrillDownPageId = "Sales Invoice List";
-
-                }
-            }
-            cuegroup(Group2)
-            {
-                Caption = 'vi prego uscite';
+                Caption = 'Avvisi Scadenza';
                 ShowCaption = True;
 
 
-                field("CampoEsempio"; Rec.NoUsersLoggedOn)
+                field("Non Maturate"; rec.idScadenza)
                 {
-                    Caption = 'terzaCue';
+                    Caption = 'Non Maturati';
                     ApplicationArea = all;
-                    DrillDownPageID = "Sales Invoice List";
-                    ToolTip = 'Specifies the sum of sales in the current month excluding taxes.';
+                    DrillDownPageID = "ListaScadenza";
+                    ToolTip = 'Tutte le scadenze';
 
                 }
-                field("CampoEsempio2"; Rec."Total of Minutes Logged On")
+                field("In Scadenza"; Rec.idScadenza)
                 {
-                    Caption = 'quartacue';
-                    ToolTip = 'Specifies the field for the total number of minutes logged on';
+                    Caption = 'In Scadenza';
+                    ToolTip = 'Scadenze il cui rinnovo cade ad un mese o meno dalla data odierna';
                     ApplicationArea = all;
-                    DrillDownPageId = "Sales Invoice List";
+                    DrillDownPageId = "ListaScadenza";
 
                 }
+                field("Scadute"; Rec.idScadenza)
+                {
+                    Caption = 'Scaduti';
+                    ToolTip = 'scadenze che hanno superato la data di rinnovo';
+                    ApplicationArea = all;
+                    DrillDownPageId = "ListaScadenza";
+
+                }
+
 
 
             }
@@ -86,6 +71,9 @@ page 50133 "Esempio Cue Activities"
                     CueRecordRef.GetTable(Rec);
                     CuesAndKpis.OpenCustomizePageForCurrentUser(CueRecordRef.Number);
                 end;
+
+
+
             }
         }
 
@@ -102,15 +90,10 @@ page 50133 "Esempio Cue Activities"
         end
     end;
 
-    trigger OnAfterGetCurrRecord()
-    begin
-        rec."Total No of Minutes This Month" := rec.GetLoggedOnMinutesThisMonth();
-        rec."Total of Minutes Logged On" := rec."Total of Minutes Logged On";
-    end;
-
-
     var
         CuesAndKpis: Codeunit "Cues And KPIs";
         ActivitiesMgt: Codeunit "Activities Mgt.";
+
+
 }
 

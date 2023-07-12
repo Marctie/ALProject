@@ -12,6 +12,8 @@ Table 50143 TabellaScadenze
 
             NotBlank = TRUE;
 
+
+
         }
         Field(2; idTipologiaScadenza; Integer)
         {

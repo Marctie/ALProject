@@ -1,4 +1,3 @@
-
 table 50142 TabellaTipologiaScadenze
 {
     DataClassification = CustomerContent;

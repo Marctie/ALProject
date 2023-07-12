@@ -1,4 +1,4 @@
-Table 50143 TabellaScadenze
+Table 50110 "Tabella Scadenze Cue"
 
 {
 

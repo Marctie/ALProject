@@ -3,7 +3,6 @@ page 50133 "Esempio Cue Activities"
     Caption = 'Esempio Cue Activities';
     PageType = CardPart;
     SourceTable = "TabellaScadenze";
-    RefreshOnActivate = true;
     ShowFilter = false;
     ApplicationArea = all;
 
@@ -18,7 +17,7 @@ page 50133 "Esempio Cue Activities"
                 ShowCaption = True;
 
 
-                field("Non Maturate"; rec.idScadenza)
+                field("Non Maturate"; rec.Stato)
                 {
                     Caption = 'Non Maturati';
                     ApplicationArea = all;
@@ -42,12 +41,7 @@ page 50133 "Esempio Cue Activities"
                     DrillDownPageId = "ListaScadenza";
 
                 }
-
-
-
             }
-
-
         }
     }
 
@@ -79,16 +73,15 @@ page 50133 "Esempio Cue Activities"
 
     }
 
-    trigger OnOpenPage()
+    trigger OnOpenPage();
     begin
-        rec.Reset();
-        if not rec.get() then begin
-            rec.init();
-            rec.insert();
-            Commit();
-
-        end
+        Rec.Reset();
+        if not Rec.Get() then begin
+            Rec.Init();
+            Rec.Insert();
+        end;
     end;
+
 
     var
         CuesAndKpis: Codeunit "Cues And KPIs";

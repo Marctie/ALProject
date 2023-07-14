@@ -19,7 +19,10 @@ page 50148 ListaScadenza
                 {
                     ApplicationArea = All;
                 }
-
+                Field(idTipologiaScadenza; rec.idTipologiaScadenza)
+                {
+                    ApplicationArea = all;
+                }
                 field(idAnagrafica; rec.idAnagrafica)
                 {
                     ApplicationArea = All;
@@ -35,6 +38,10 @@ page 50148 ListaScadenza
                 field(Stato; rec.Stato)
                 {
                     ApplicationArea = All;
+                }
+                field(Cuefield; rec.Cuefield)
+                {
+                    ApplicationArea = all;
                 }
 
             }

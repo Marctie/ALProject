@@ -1,7 +1,6 @@
 Table 50143 TabellaScadenze
 
 {
-
     Caption = 'Scadenze';
 
     fields
@@ -10,26 +9,22 @@ Table 50143 TabellaScadenze
         Field(1; idScadenza; Integer)
         {
 
-            NotBlank = TRUE;
-
-
-
         }
         Field(2; idTipologiaScadenza; Integer)
         {
 
-            NotBlank = TRUE;
-            TableRelation = TabellaScadenze.IdTipologiaScadenza;
+
         }
         Field(3; TipoAnagrafica; Text[25])
         {
-            DataClassification = ToBeClassified;
+
         }
         Field(4; idAnagrafica; Code[20])
         {
 
             NotBlank = TRUE;
             TableRelation = Employee."No.";
+
         }
         Field(5; Scadenza; Date)
         {
@@ -37,7 +32,6 @@ Table 50143 TabellaScadenze
         }
         Field(6; Stato; Integer)
         {
-
 
         }
         Field(7; TipoAnagrafica1; Option)
@@ -59,6 +53,12 @@ Table 50143 TabellaScadenze
             NotBlank = TRUE;
             TableRelation = TabellaTipologiaScadenze.Tipologia;
         }
+        field(10; Cuefield; Integer)
+        {
+            CalcFormula = count(TabellaScadenze WHERE(Stato = CONST(2)));
+            Caption = 'Cuefield';
+            FieldClass = FlowField;
+        }
     }
     Keys
     {
@@ -67,4 +67,5 @@ Table 50143 TabellaScadenze
             Clustered = TRUE;
         }
     }
+
 }

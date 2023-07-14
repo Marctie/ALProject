@@ -5,7 +5,6 @@ page 50146 CardScadenza
     ApplicationArea = All;
     Editable = true;
     UsageCategory = Lists;
-    RefreshOnActivate = true;
     SourceTable = TabellaScadenze;
 
 
@@ -16,6 +15,10 @@ page 50146 CardScadenza
             Group(General)
             {
                 field(idScadenza; Rec.idScadenza)
+                {
+                    ApplicationArea = all;
+                }
+                Field(idTipologiaScadenza; rec.idTipologiaScadenza)
                 {
                     ApplicationArea = all;
                 }
@@ -36,6 +39,10 @@ page 50146 CardScadenza
                     ApplicationArea = all;
                     DrillDown = True;
 
+                }
+                field(Cuefield; rec.Cuefield)
+                {
+                    ApplicationArea = all;
                 }
             }
         }

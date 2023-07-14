@@ -9,17 +9,17 @@ table 50134 "Tabella Esempio Cue"
         {
             Caption = 'Primary Key';
         }
-        field(2; NoUsersLoggedOn; Integer)
+        field(2; "Non Maturati"; Integer)
         {
             FieldClass = FlowField;
             CalcFormula = count("Active Session" where("Client Type" = const("Web Client")));
         }
-        field(3; "Total of Minutes Logged On"; Decimal)
+        field(3; "In Scadenza"; Decimal)
         {
             FieldClass = FlowField;
             CalcFormula = sum("User Time Register".Minutes);
         }
-        field(4; "Total No of Minutes This Month"; Integer)
+        field(4; "Scaduti"; Integer)
         {
             FieldClass = FlowField;
             CalcFormula = count("Active Session" where("Client Type" = const("Web Client")));

@@ -16,6 +16,7 @@
             "enableLongRunningSqlStatements": true,
             "longRunningSqlStatementsThreshold": 500,
             "numberOfSqlStatements": 10,
+            "schemaUpdateMode": "Recreate", 
             "tenant": "bssrl.it"
 =======
     // Use IntelliSense to learn about possible attributes.

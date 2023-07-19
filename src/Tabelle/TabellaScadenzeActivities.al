@@ -67,5 +67,11 @@ Table 50143 TabellaScadenze
             Clustered = TRUE;
         }
     }
-
+    trigger OnInsert()
+    var
+        DataFissa: Date;
+    begin
+        DataFissa := 20230115D;
+        "Scadenza" := DataFissa;
+    end;
 }

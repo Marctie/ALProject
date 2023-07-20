@@ -28,6 +28,8 @@ Table 50143 TabellaScadenze
         }
         Field(5; Scadenza; Date)
         {
+            Caption = 'Scadenza';
+            DataClassification = ToBeClassified;
 
         }
         Field(6; Stato; Integer)
@@ -59,6 +61,11 @@ Table 50143 TabellaScadenze
             Caption = 'Cuefield';
             FieldClass = FlowField;
         }
+        field(11; idScadenzaCue; Integer)
+        {
+            Caption = 'ID Scadenza Cue';
+            DataClassification = ToBeClassified;
+        }
     }
     Keys
     {
@@ -69,9 +76,18 @@ Table 50143 TabellaScadenze
     }
     trigger OnInsert()
     var
-        DataFissa: Date;
+        CurrentDate: Date;
     begin
-        DataFissa := 20230115D;
-        "Scadenza" := DataFissa;
+        CurrentDate := CurrentDate;
+        ModifyAll("Scadenza", CurrentDate);
+    end;
+
+    trigger OnAfterGetRecord(var Rec: Record "TabellaScadenzeActivities")
+    var
+        CueRec: Record "TabellaScadenzeCue";
+        idScadenzaCue: Integer;
+    begin
+        idScadenzaCue := GetGlobalInteger("idScadenzaCue");
+        CodeunitFiltroScadenze.SetScadenzeFilter(idScadenzaCue);
     end;
 }

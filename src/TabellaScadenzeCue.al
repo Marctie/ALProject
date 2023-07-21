@@ -1,23 +1,23 @@
-Table 50110 "Tabella Scadenze Cue"
+Table 50101 "Tabella Scadenze Cue"
 
 {
 
-    Caption = 'Scadenze';
 
     fields
     {
 
         Field(1; idScadenza; Integer)
         {
-
             NotBlank = TRUE;
-
+            InitValue = 1;
+            FieldClass = FlowField;
+            CalcFormula = sum("tabella Scadenze Cue".idScadenza) WHERE("tabella scadenze cue".stato = CONST(1));
         }
         Field(2; idTipologiaScadenza; Integer)
         {
 
             NotBlank = TRUE;
-            TableRelation = TabellaScadenze.IdTipologiaScadenza;
+
         }
         Field(3; TipoAnagrafica; Text[25])
         {
@@ -33,9 +33,10 @@ Table 50110 "Tabella Scadenze Cue"
         {
 
         }
-        Field(6; Stato; Integer)
+        Field(6; Stato; Option)
         {
-
+            OptionCaption = 'DaRinnovare, Rinnovata';
+            OptionMembers = "1","2";
 
         }
         Field(7; TipoAnagrafica1; Option)
@@ -55,7 +56,18 @@ Table 50110 "Tabella Scadenze Cue"
         {
             DataClassification = CustomerContent;
             NotBlank = TRUE;
-            TableRelation = TabellaTipologiaScadenze.Tipologia;
+
+        }
+        field(10; LimiteScadenza; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(11; ExpirationStatus; Option)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'StatoScadenza';
+            OptionCaption = 'Scaduta, InScadenza, NonMaturata';
+            OptionMembers = Scaduta,InScadenza,NonMaturata;
         }
     }
     Keys

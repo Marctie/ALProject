@@ -2,7 +2,7 @@ page 50133 "Esempio Cue Activities"
 {
     Caption = 'Esempio Cue Activities';
     PageType = CardPart;
-    SourceTable = "TabellaScadenze";
+    SourceTable = "Tabella Scadenze cue";
     ShowFilter = false;
     ApplicationArea = all;
 
@@ -17,7 +17,7 @@ page 50133 "Esempio Cue Activities"
                 ShowCaption = True;
 
 
-                field("Non Maturate"; rec.Stato)
+                field("Non Maturate"; rec.idScadenza)
                 {
                     Caption = 'Non Maturati';
                     ApplicationArea = all;
@@ -58,13 +58,7 @@ page 50133 "Esempio Cue Activities"
                 Image = Setup;
                 ToolTip = 'Set up the cues (status tiles) related to the role.';
 
-                trigger OnAction()
-                var
-                    CueRecordRef: RecordRef;
-                begin
-                    CueRecordRef.GetTable(Rec);
-                    CuesAndKpis.OpenCustomizePageForCurrentUser(CueRecordRef.Number);
-                end;
+
 
 
 
@@ -79,13 +73,16 @@ page 50133 "Esempio Cue Activities"
         if not Rec.Get() then begin
             Rec.Init();
             Rec.Insert();
+            EmployeeDocumentExpiration.CheckDocumentExpirations();
         end;
+
     end;
 
 
     var
         CuesAndKpis: Codeunit "Cues And KPIs";
         ActivitiesMgt: Codeunit "Activities Mgt.";
+        EmployeeDocumentExpiration: Codeunit "Employee Document Expiration";
 
 
 }

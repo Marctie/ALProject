@@ -5,7 +5,7 @@ page 50146 CardScadenza
     ApplicationArea = All;
     Editable = true;
     UsageCategory = Lists;
-    SourceTable = TabellaScadenze;
+    SourceTable = "Tabella Scadenze Cue";
 
 
     Layout
@@ -33,6 +33,7 @@ page 50146 CardScadenza
                 field(Stato; Rec.Stato)
                 {
                     ApplicationArea = all;
+                    DrillDown = TRUE;
                 }
                 field(TipoAnagrafica1; Rec.TipoAnagrafica1)
                 {
@@ -40,10 +41,11 @@ page 50146 CardScadenza
                     DrillDown = True;
 
                 }
-                field(Cuefield; rec.Cuefield)
+                field(ExpirationStatus; Rec.ExpirationStatus)
                 {
-                    ApplicationArea = all;
+
                 }
+
             }
         }
     }

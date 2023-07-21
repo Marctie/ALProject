@@ -67,27 +67,4 @@ Table 50143 TabellaScadenze
             DataClassification = ToBeClassified;
         }
     }
-    Keys
-    {
-        key(PrimaryKey; idScadenza)
-        {
-            Clustered = TRUE;
-        }
-    }
-    trigger OnInsert()
-    var
-        CurrentDate: Date;
-    begin
-        CurrentDate := CurrentDate;
-        ModifyAll("Scadenza", CurrentDate);
-    end;
-
-    trigger OnAfterGetRecord(var Rec: Record "TabellaScadenzeActivities")
-    var
-        CueRec: Record "TabellaScadenzeCue";
-        idScadenzaCue: Integer;
-    begin
-        idScadenzaCue := GetGlobalInteger("idScadenzaCue");
-        CodeunitFiltroScadenze.SetScadenzeFilter(idScadenzaCue);
-    end;
 }

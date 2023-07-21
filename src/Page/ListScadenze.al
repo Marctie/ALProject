@@ -5,7 +5,7 @@ page 50148 ListaScadenza
     Editable = true;
     UsageCategory = Lists;
     Caption = 'Lista Scadenze';
-    SourceTable = TabellaScadenze;
+    SourceTable = "Tabella Scadenze Cue";
     CardPageId = CardScadenza;
 
     layout
@@ -39,10 +39,11 @@ page 50148 ListaScadenza
                 {
                     ApplicationArea = All;
                 }
-                field(Cuefield; rec.Cuefield)
+                field(ExpirationStatus; Rec.ExpirationStatus)
                 {
-                    ApplicationArea = all;
+
                 }
+
 
             }
         }
